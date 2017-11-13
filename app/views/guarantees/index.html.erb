@@ -1,0 +1,43 @@
+<h1>Garantias</h1>
+<div class="ui divider"></div>
+<div class="ui action left icon input">
+  <i class="search icon"></i>
+  <input type="text" placeholder="Buscar...">
+  <div class="ui teal button">Buscar</div>
+</div>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Numero de ingreso</th>
+      <th>Fecha de ingreso</th>
+      <th>Fecha de vencimiento</th>
+      <th>Fecha de devolución</th>
+      <th>Detalle</th>
+      <th>Analista</th>
+      <th>Valor de garantia</th>
+      <th>Codigo BIP</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @guarantees.each do |guarantee| %>
+      <tr>
+        <td><%= guarantee.income_number %></td>
+        <td><%= guarantee.income_date.try(:strftime, "%d/%m/%Y") %></td>
+        <td><%= guarantee.due_date.try(:strftime, "%d/%m/%Y") %></td>
+        <td><%= guarantee.devolution_date.try(:strftime, "%d/%m/%Y") %></td>
+        <td><%= guarantee.detail %></td>  
+        <td><%= guarantee.sectorialist_devolution %></td>
+        <td><%= guarantee.value_guarantee %></td>
+        <td><%= guarantee.bip %></td>
+        <td><%= link_to 'Ver', guarantee, class: 'ui mini primary button' %></td>
+        <td><%= link_to 'Editar', edit_guarantee_path(guarantee), class: 'ui mini teal button' %></td>
+        <td><%= link_to 'Eliminar', guarantee, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui mini red button' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

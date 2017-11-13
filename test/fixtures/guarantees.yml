@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  income_number: MyString
+  income_date: 2017-11-09
+  income_applicant: MyString
+  borrower_name: MyString
+  borrower_id: 1
+  bank_name: MyString
+  value_guarantee: MyString
+  currency_guarantee: MyString
+  due_date: 2017-11-09
+  bail: MyString
+  detail: MyString
+  bip: MyString
+  email: MyString
+  observation: MyText
+  state: MyString
+  devolution_number: MyString
+  devolution_date: 2017-11-09
+  devolution_return: MyString
+  sectorialist_devolution: MyString
+  technical_unit: MyString
+
+two:
+  income_number: MyString
+  income_date: 2017-11-09
+  income_applicant: MyString
+  borrower_name: MyString
+  borrower_id: 1
+  bank_name: MyString
+  value_guarantee: MyString
+  currency_guarantee: MyString
+  due_date: 2017-11-09
+  bail: MyString
+  detail: MyString
+  bip: MyString
+  email: MyString
+  observation: MyText
+  state: MyString
+  devolution_number: MyString
+  devolution_date: 2017-11-09
+  devolution_return: MyString
+  sectorialist_devolution: MyString
+  technical_unit: MyString

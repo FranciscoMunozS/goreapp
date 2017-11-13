@@ -1,0 +1,18 @@
+.ui.stackable.menu
+  - if user_signed_in?
+    %a.item#sidebutton
+      %i.sidebar.icon
+      Menu
+    .ui.container
+      .item
+        %img(src="https://semantic-ui.com/images/logo.png" alt="")
+      .right.menu
+        %a= link_to "Nueva Boleta", new_guarantee_path, class: 'item'
+        %a= link_to current_user.email, edit_user_registration_path, class: 'item'
+        %a= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: 'item'
+  - else
+    .ui.container
+      .item
+        %img(src="https://semantic-ui.com/images/logo.png" alt="")
+      .right.menu
+        %a= link_to "Iniciar sesión", new_user_session_path, class: 'item'

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GoreApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+  <body>    
+    <div class="pusher">
+      <%= render 'assets/nav' %>
+      <%= render 'assets/side' %>
+      <div class="ui container">
+        <% flash.each do |name, msg| %>
+          <%= content_tag(:div, msg, class: "alert ui message") %>
+        <% end %>        
+        <%= yield %>
+      </div>
+      <br><br>
+      <%= render 'assets/footer' %>
+    </div>
+  </body>
+</html>

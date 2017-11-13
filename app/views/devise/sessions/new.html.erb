@@ -1,0 +1,23 @@
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2>Iniciar sesión</h2>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="ui large form">
+        <div class="ui stacked segment">
+          <div class="field">
+            <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "Correo electronico" %>
+          </div>
+          <div class="field">
+            <%= f.input :password, required: true, label: false, placeholder: "Contraseña" %>
+          </div>
+          <%= f.button :submit, "Iniciar sesión", class: 'ui fluid primary button' %>
+        </div> 
+      </div> 
+    <% end %>
+    <div class="ui message">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
+
+
