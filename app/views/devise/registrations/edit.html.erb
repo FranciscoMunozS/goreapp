@@ -1,27 +1,27 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
+  <div class="ui segment">
+    <div class="ui form">
+      <h2>Configuración usuario</h2>
+      <div class="ui divider"></div>
+      <div class="field">
+        <%= f.input :email, label: false, placeholder: 'Correo electronico',required: true, autofocus: true %>
+      </div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Esperando confirmación para: <%= resource.unconfirmed_email %></p>
+      <% end %>
+      <div class="two fields">
+        <div class="field">
+          <%= f.input :password, label: false, placeholder: 'Contraseña', autocomplete: "off", hint: "Dejar en blanco si no se quiere hacer modificaciones", required: false %>
+        </div>
+        <div class="field">
+          <%= f.input :password_confirmation, label: false, placeholder: 'Confirmar contraseña' ,required: false %>
+        </div>
+      </div>
+      <div class="field">
+        <%= f.input :current_password, placeholder: 'Contraseña actual', label: false, hint: "Necesitamos tu contraseña actual para poder realizar los cambios", required: true %>
+      </div>
+      <%= f.button :submit, "Actualizar datos", class: 'ui teal button' %>
+    </div>
+  </div>   
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>

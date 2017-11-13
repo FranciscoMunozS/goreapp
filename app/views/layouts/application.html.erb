@@ -9,16 +9,22 @@
   </head>
   <body>    
     <div class="pusher">
+    <% if user_signed_in? %>
       <%= render 'assets/nav' %>
       <%= render 'assets/side' %>
+    <% end %>
       <div class="ui container">
         <% flash.each do |name, msg| %>
           <%= content_tag(:div, msg, class: "alert ui message") %>
-        <% end %>        
-        <%= yield %>
+        <% end %>
+        <div id="pusher">
+          <%= yield %>
+        </div>               
       </div>
       <br><br>
-      <%= render 'assets/footer' %>
     </div>
+    <% if user_signed_in? %>
+      <%= render 'assets/footer' %>
+    <% end %>
   </body>
 </html>
