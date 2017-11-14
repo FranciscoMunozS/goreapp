@@ -1,10 +1,15 @@
 <h1>Garantias</h1>
 <div class="ui divider"></div>
+
 <div class="ui action left icon input">
   <i class="search icon"></i>
   <input type="text" placeholder="Buscar...">
   <div class="ui teal button">Buscar</div>
 </div>
+
+<%= link_to 'Exportar Excel', guarantees_path(format: "xlsx"), class: 'ui primary button' %>
+
+
 
 <table class="ui celled table">
   <thead>

@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Boletas") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(Correlativo Numero de ingreso)
+  
+  # each user is a row on your spreadsheet
+  @guarantees.each do |guarantee|
+    sheet.add_row [guarantee.id, guarantee.income_number ]
+  end
+end
