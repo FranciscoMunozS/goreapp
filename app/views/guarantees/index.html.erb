@@ -34,7 +34,7 @@
         <td><%= guarantee.due_date.try(:strftime, "%d/%m/%Y") %></td>
         <td><%= guarantee.devolution_date.try(:strftime, "%d/%m/%Y") %></td>
         <td><%= guarantee.detail.try(:capitalize) %></td>  
-        <td><%= guarantee.sectorialist_devolution.to_s.gsub(/[A-Za-z']+/,&:capitalize) %></td>
+        <td><%= guarantee.income_applicant.to_s.gsub(/[A-Za-z']+/,&:capitalize) %></td>
         <td><%= guarantee.value_guarantee %></td>
         <td><%= guarantee.bip %></td>
         <td><%= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini teal button' %></td>
@@ -42,5 +42,5 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
+<%= will_paginate @guarantes, renderer: WillPaginateSemanticUi::ActionView::Renderer %>
