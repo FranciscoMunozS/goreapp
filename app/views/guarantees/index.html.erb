@@ -22,7 +22,7 @@
       <th>Analista</th>
       <th>Valor de garantia</th>
       <th>Codigo BIP</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -33,13 +33,11 @@
         <td><%= guarantee.income_date.try(:strftime, "%d/%m/%Y") %></td>
         <td><%= guarantee.due_date.try(:strftime, "%d/%m/%Y") %></td>
         <td><%= guarantee.devolution_date.try(:strftime, "%d/%m/%Y") %></td>
-        <td><%= guarantee.detail %></td>  
-        <td><%= guarantee.sectorialist_devolution %></td>
+        <td><%= guarantee.detail.capitalize %></td>  
+        <td><%= guarantee.sectorialist_devolution.gsub(/[A-Za-z']+/,&:capitalize) %></td>
         <td><%= guarantee.value_guarantee %></td>
         <td><%= guarantee.bip %></td>
-        <td><%= link_to 'Ver', guarantee, class: 'ui mini primary button' %></td>
-        <td><%= link_to 'Editar', edit_guarantee_path(guarantee), class: 'ui mini teal button' %></td>
-        <td><%= link_to 'Eliminar', guarantee, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui mini red button' %></td>
+        <td><%= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini teal button' %></td>
       </tr>
     <% end %>
   </tbody>
