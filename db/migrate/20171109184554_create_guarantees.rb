@@ -1,6 +1,7 @@
 class CreateGuarantees < ActiveRecord::Migration[5.1]
   def change
     create_table :guarantees do |t|
+      t.string  :correlative
       t.string  :income_number
       t.date    :income_date
       t.string  :income_applicant

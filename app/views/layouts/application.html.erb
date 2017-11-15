@@ -9,14 +9,14 @@
   </head>
   <body>    
     <div class="pusher">
-    <% if user_signed_in? %>
-      <%= render 'assets/nav' %>
-      <%= render 'assets/side' %>
-    <% end %>
+      <% if user_signed_in? %>
+        <%= render 'assets/nav' %>
+        <%= render 'assets/side' %>
+      <% end %>
+      <% flash.each do |name, msg| %>
+        <%= content_tag(:div, msg, class: "alert ui message") %>
+      <% end %>
       <div class="ui container">
-        <% flash.each do |name, msg| %>
-          <%= content_tag(:div, msg, class: "alert ui message") %>
-        <% end %>
         <div id="pusher">
           <%= yield %>
         </div>               

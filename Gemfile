@@ -22,7 +22,7 @@ gem 'searchkick', '~> 2.3', '>= 2.3.2'
 gem 'rubyzip', '>= 1.2.1'
 gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: '776037c0fc799bb09da8c9ea47980bd3bf296874'
 gem 'axlsx_rails'
-
+gem 'seed_dump'
 
 
 

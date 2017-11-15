@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20171113143006) do
   enable_extension "plpgsql"
 
   create_table "guarantees", force: :cascade do |t|
+    t.string "correlative"
     t.string "income_number"
     t.date "income_date"
     t.string "income_applicant"
