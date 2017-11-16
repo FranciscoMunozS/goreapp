@@ -35,7 +35,7 @@
         <td><%= guarantee.devolution_date.try(:strftime, "%d/%m/%Y") %></td>
         <td><%= guarantee.detail.try(:capitalize) %></td>  
         <td><%= guarantee.sectorialist_devolution.to_s.gsub(/[A-Za-z']+/,&:capitalize) %></td>
-        <td><%= guarantee.value_guarantee %></td>
+        <td><%= guarantee.value_guarantee.gsub(/[^\d\.]/, '').to_f %></td>
         <td><%= guarantee.bip %></td>
         <td><%= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini teal button' %></td>
       </tr>
