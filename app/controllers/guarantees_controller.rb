@@ -5,13 +5,14 @@ class GuaranteesController < ApplicationController
   # GET /guarantees.json
   def index
     @guarantees = Guarantee.all
-
+    @guarantees = Guarantee.paginate(:page => params[:page], :per_page => 10)
+    @excel = Guarantee.all
+ 
     respond_to do |format|
-      format.html
-      format.xlsx
+      format.html 
+      format.xlsx 
     end
   end
-  
 
   # GET /guarantees/1
   # GET /guarantees/1.json
