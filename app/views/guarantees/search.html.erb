@@ -1,0 +1,46 @@
+<h1>Garantias</h1>
+<div class="ui divider"></div>
+
+<%= form_tag search_guarantees_path, method: :get, class: 'ui action left icon input', role: 'search' do  %>
+  <i class="search icon"></i>
+  <%= text_field_tag :search, params[:search] %>
+  <%= button_tag "Buscar", name: nil, class: 'ui primary button' %>
+<% end %>
+
+<%= link_to 'Exportar Excel', guarantees_path(format: "xlsx"), class: 'ui primary button' %>
+
+<%= link_to 'Ingresar nueva boleta', new_guarantee_path, class: 'ui teal button'  %>
+
+<table class="ui celled table">
+  <thead>
+    <tr>
+      <th>Numero de ingreso</th>
+      <th>Fecha de ingreso</th>
+      <th>Fecha de vencimiento</th>
+      <th>Fecha de devolución</th>
+      <th>Detalle</th>
+      <th>Analista</th>
+      <th>Valor de garantia</th>
+      <th>Codigo BIP</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @guarantees.each do |guarantee| %>
+      <tr>
+        <td><%= guarantee.income_number %></td>
+        <td><%= guarantee.income_date.try(:strftime, "%d/%m/%Y") %></td>
+        <td><%= guarantee.due_date.try(:strftime, "%d/%m/%Y") %></td>
+        <td><%= guarantee.devolution_date.try(:strftime, "%d/%m/%Y") %></td>
+        <td><%= guarantee.detail.try(:capitalize) %></td>  
+        <td><%= guarantee.income_applicant.to_s.gsub(/[A-Za-z']+/,&:capitalize) %></td>
+        <td><%= guarantee.value_guarantee.gsub(/[^\d\.]/, '').to_f %></td>
+        <td><%= guarantee.bip %></td>
+        <td><%= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini teal button' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= will_paginate @guarantes, renderer: WillPaginateSemanticUi::ActionView::Renderer %>
