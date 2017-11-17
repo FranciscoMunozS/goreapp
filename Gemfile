@@ -20,10 +20,11 @@ gem 'enumerize', '~> 2.1', '>= 2.1.2'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'searchkick', '~> 2.3', '>= 2.3.2'
 gem 'rubyzip', '>= 1.2.1'
+gem 'auto_increment', '~> 1.4', '>= 1.4.1'
 gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: '776037c0fc799bb09da8c9ea47980bd3bf296874'
 gem 'axlsx_rails'
 gem 'seed_dump'
-gem "will_paginate_semantic_ui"
+gem 'will_paginate_semantic_ui'
 
 
 group :development, :test do
