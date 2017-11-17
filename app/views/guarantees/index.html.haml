@@ -1,0 +1,34 @@
+%h1 Garantias
+.ui.divider
+= form_tag search_guarantees_path, method: :get, class: 'ui action left icon input', role: 'search' do
+  %i.search.icon
+  = text_field_tag :search, params[:search]
+  = button_tag "Buscar", name: nil, class: 'ui primary button'
+= link_to 'Exportar Excel', guarantees_path(format: "xlsx"), class: 'ui primary right floated large button'
+= link_to 'Ingresar nueva boleta', new_guarantee_path, class: 'ui teal right floated large button'
+%table.ui.celled.table
+  %thead
+    %tr
+      %th N° Correlativo
+      %th Numero de ingreso
+      %th Fecha de ingreso
+      %th Fecha de vencimiento
+      %th Fecha de devolución
+      %th Detalle
+      %th Analista
+      %th Valor de garantia
+      %th
+  %tbody
+    - @guarantees.each do |guarantee|
+      %tr
+        %td= guarantee.correlative
+        %td= guarantee.income_number
+        %td= income_date_format(guarantee.income_date)
+        %td= due_date_format(guarantee.due_date)
+        %td= devolution_date_format(guarantee.devolution_date)
+        %td= capitalize_detail(guarantee.detail)
+        %td= capitalize_name(guarantee.income_applicant)
+        %td= number_to_currency_clp(guarantee.value_guarantee)
+        %td= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini teal button'
+%br/
+= will_paginate @guarantes, renderer: WillPaginateSemanticUi::ActionView::Renderer

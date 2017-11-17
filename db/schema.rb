@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20171113143006) do
     t.integer "borrower_id"
     t.string "bank_name"
     t.string "guarantee_number"
-    t.string "value_guarantee"
+    t.integer "value_guarantee"
     t.string "currency_guarantee"
     t.date "due_date"
     t.string "state"
