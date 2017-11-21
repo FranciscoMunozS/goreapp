@@ -20,6 +20,10 @@ $(document).ready(function () {
 
   $('.ui.checkbox').checkbox();
 
+  $('.special.cards .image').dimmer({
+    on: 'hover'
+  });
+
 });
 
 $(document).ready(function () {

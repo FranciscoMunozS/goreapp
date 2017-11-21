@@ -1,0 +1,45 @@
+%h2
+  Perfil de #{full_name}
+.ui.divider
+.ui.grid
+  .row
+    .four.wide.column
+      .ui.special.cards
+        .card
+          .blurring.dimmable.image
+            .ui.dimmer
+              .content
+                .center
+                  = link_to 'Editar perfil', edit_user_registration_path, class: 'ui inverted button'
+            %img{:src => "https://semantic-ui.com/images/avatar2/large/matthew.png"}/
+          .content
+            %a.header 
+              = full_name
+            .meta
+              %span.date Se unio el
+              = @user.created_at.year
+            .description
+              %p= @user.about
+          .extra.content
+            %a
+              %i.mail.icon
+              = @user.email           
+    .twelve.wide.column
+      .ui.segment
+        %h4.header Ultimos movimientos
+        .ui.divider
+        %p Ultimas garantias ingresadas
+      %table.ui.celled.table
+        %thead
+          %tr
+            %th N° Correlativo
+            %th Numero de ingreso
+            %th Detalle
+            %th
+        %tbody
+          - @guarantees.limit(5).each do |guarantee|
+            %tr
+              %td= guarantee.correlative
+              %td= guarantee.income_number
+              %td= capitalize_detail(guarantee.detail)
+              %td= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini teal button'

@@ -4,6 +4,17 @@
     <div class="ui form">
       <h2>Configuración usuario</h2>
       <div class="ui divider"></div>
+      <div class="two fields">
+        <div class="field">
+          <%= f.input :first_name, label: false, placeholder: 'Nombre',required: true, autofocus: true %>
+        </div>
+        <div class="field">
+          <%= f.input :last_name, label: false, placeholder: 'Apellido',required: true, autofocus: true %>
+        </div>
+      </div>
+      <div class="field">
+        <%= f.input :username, label: false, placeholder: 'Nombre de usuario',required: true, autofocus: true %>
+      </div>
       <div class="field">
         <%= f.input :email, label: false, placeholder: 'Correo electronico',required: true, autofocus: true %>
       </div>
@@ -21,7 +32,11 @@
       <div class="field">
         <%= f.input :current_password, placeholder: 'Contraseña actual', label: false, hint: "Necesitamos tu contraseña actual para poder realizar los cambios", required: true %>
       </div>
+      <div class="field">
+        <%= f.input :about, placeholder: 'Acerca de...', label: false, required: false  %>
+      </div>
       <%= f.button :submit, "Actualizar datos", class: 'ui teal button' %>
+      <%= link_to 'Cancelar', root_path, class: 'ui red button' %>
     </div>
   </div>   
 <% end %>
