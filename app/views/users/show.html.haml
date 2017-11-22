@@ -11,7 +11,8 @@
               .content
                 .center
                   = link_to 'Editar perfil', edit_user_registration_path, class: 'ui inverted button'
-            %img{:src => "https://semantic-ui.com/images/avatar2/large/matthew.png"}/
+            - if @user.avatar?
+              = image_tag @user.avatar.url(:thumb)
           .content
             %a.header 
               = full_name

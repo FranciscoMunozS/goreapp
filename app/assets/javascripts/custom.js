@@ -27,9 +27,21 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+  var $realInputField;
+  $realInputField = $('#user_avatar');
+  $realInputField.change(function () {
+    return $('#file-display').val($(this).val().replace(/^.*[\\\/]/, ''));
+  });
+  return $('#upload-btn').click(function () {
+    return $realInputField.click();
+  });
+});
+
+$(document).ready(function () {
   setTimeout(function () {
     $('.alert').fadeOut("slow", function () {
       $(this).remove();
     })
   }, 2500);
 })
+

@@ -5,6 +5,9 @@
     <%= f.error_notification %>
 
     <div class="ui form">
+      <div class="field">
+        <%= f.input :avatar, label: false, placeholder: 'Foto de perfil' %>
+      </div>
       <div class="two fields">
         <div class="field">
           <%= f.input :first_name, label: false, placeholder: 'Nombre', required: true %>
