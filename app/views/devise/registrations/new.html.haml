@@ -1,0 +1,26 @@
+.ui.segment
+  %h2 Registrarse
+  .ui.divider
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = f.error_notification
+    .ui.form
+      .field
+        = f.input :avatar, label: false, placeholder: 'Foto de perfil'
+      .two.fields
+        .field
+          = f.input :first_name, label: false, placeholder: 'Nombre', required: true
+        .field
+          = f.input :last_name, label: false, placeholder: 'Apellido', required: true
+      .field
+        = f.input :username, label: false, placeholder: 'Nombre de usuario', required: true
+      .field
+        = f.input :email, label: false, placeholder: 'Correo electronico', required: true, autofocus: true
+      .two.fields
+        .field
+          = f.input :password, label: false, placeholder: 'Contraseña', required: true, hint: ("Ingrese #{@minimum_password_length} caracteres minimo" if @minimum_password_length)
+        .field
+          = f.input :password_confirmation, label: false, placeholder: 'Confirmar contraseña', required: true
+    .form-actions
+      = f.button :submit, "Registrarse", class: 'ui primary button'
+.ui.message
+  = render "devise/shared/links"
