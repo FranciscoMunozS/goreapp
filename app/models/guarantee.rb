@@ -5,6 +5,8 @@ class Guarantee < ApplicationRecord
 
   auto_increment :correlative
 
+  belongs_to :user
+
   enumerize :bank_name, in: [:ESTADO, :SANTANDER, :BBVA, :CORPBANCA, :FALABELLA, :RIPLEY, :CHILE, :BICE, :SCOTIABANK, :CREDITO_E_INVERSIONES,
                             :EDWARDS, :INTERNACIONAL, :ITAU, :SECURITY, :PROAVAL, :HDI, :CONSORCIO, :FIRST_AVAL, :NOTARIA,
                             :MASAVAL, :BCI, :-]
