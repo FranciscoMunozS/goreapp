@@ -23,6 +23,14 @@ en:
         CONSORCIO: "Banco Consorcio"
         FIRST_AVAL: "Banco First Aval"
         -: "Sin banco"
+      guarantee_type:
+        GARANTIA: "Boleta de garantia"
+        VALE_VISTA: "Vale vista"
+        LETRA_CAMBIO: "Letra de cambio"
+        CERTIFICADO_PRORROGA: "Certificado de prorroga"
+        CERTIFICADO_FIANZA: "Certificado de fianza"
+        POLIZA_GARANTIA: "Poliza de garantia"
+        PAGARE: "Pagare"
       state:
         DEVUELTA: "Devuelta"
         VENCIDA: "Vencida"
