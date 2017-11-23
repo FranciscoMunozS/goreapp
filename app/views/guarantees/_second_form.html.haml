@@ -33,6 +33,8 @@
           = f.input :income_applicant, label: 'Solicitante de ingreso'
         #income_date.field
           = f.input :income_date, label: 'Fecha de ingreso', as: :string, input_html: { class: 'ui calendar' }
+      .field
+        = f.input :guarantee_type, label: 'Tipo garantia', input_html: { class: 'ui fluid selection dropdown' }
     .ui.segment
       %h2 Datos prestador
       .ui.divider

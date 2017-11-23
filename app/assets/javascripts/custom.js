@@ -26,6 +26,17 @@ $(document).ready(function () {
 
 });
 
+$(function () {
+  $("#guarantee_guarantee_type").change(function () {
+    var guarantee_type = $(this).val();
+    if (guarantee_type != "VALE_VISTA") {
+      $("#guarantee_due_date").show();
+    } else {
+      $("#guarantee_due_date").hide();
+    }
+  });
+});
+
 $(document).ready(function () {
   var $realInputField;
   $realInputField = $('#user_avatar');

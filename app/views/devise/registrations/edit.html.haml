@@ -12,11 +12,18 @@
                 .image
                   = image_tag @user.avatar.url(:thumb)
               .content
-                %a#upload-btn.ui.fluid.icon.button
-                  %i.file.icon
-                  Foto de perfil
-                = f.input :avatar, label: false, placeholder: 'Foto de perfil', input_html: { hidden: true }
-                %input#file-display{:style => "display:none", :type => "file"}/
+                - if @user.avatar?
+                  %a#upload-btn.ui.fluid.icon.button
+                    %i.file.icon
+                    Cambiar imagen                    
+                  = f.input :avatar, label: false, placeholder: 'Foto de perfil', input_html: { hidden: true }
+                  %input#file-display{:style => "display:none", :type => "file"}/
+                - else
+                  %a#upload-btn.ui.fluid.icon.button
+                    %i.plus.icon
+                    Agregar imagen de perfil
+                  = f.input :avatar, label: false, placeholder: 'Foto de perfil', input_html: { hidden: true }
+                  %input#file-display{:style => "display:none", :type => "file"}/               
           .twelve.wide.column
             .two.fields
               .field
