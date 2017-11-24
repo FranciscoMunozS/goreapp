@@ -34,8 +34,12 @@
           = f.input :value_guarantee, label: "Valor garantia"
         .field
           = f.input :currency_guarantee, label: "Moneda garantia", input_html: { class: 'ui fluid selection dropdown' }
-        #due-date.field
-          = f.input :due_date, as: :string, label: "Fecha de vencimiento", input_html: { class: 'ui calendar' }, style:"#{'display:none' if @guarantee.guarantee_type == 'VALE_VISTA'}"
+        - if @guarantee.guarantee_type == 'VALE_VISTA'
+          #due-date.field
+            = f.input :due_date, as: :string, label: "Fecha de vencimiento", disabled: true, input_html: { class: 'ui calendar' }
+        - else 
+          #due-date.field
+            = f.input :due_date, as: :string, label: "Fecha de vencimiento", input_html: { class: 'ui calendar' }
       .two.fields
         .field
           = f.input :bail, label: "Caución"

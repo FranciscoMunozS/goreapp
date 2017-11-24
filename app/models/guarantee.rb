@@ -1,4 +1,6 @@
 class Guarantee < ApplicationRecord
+  resourcify
+
   extend Enumerize
 
   searchkick

@@ -30,9 +30,10 @@ $(function () {
   $("#guarantee_guarantee_type").change(function () {
     var guarantee_type = $(this).val();
     if (guarantee_type != "VALE_VISTA") {
-      $("#guarantee_due_date").show();
-    } else {
-      $("#guarantee_due_date").hide();
+      document.getElementById("guarantee_due_date").disabled = false;
+    }
+    else {
+      document.getElementById("guarantee_due_date").disabled = true;
     }
   });
 });

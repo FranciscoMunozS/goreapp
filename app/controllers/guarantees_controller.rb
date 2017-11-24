@@ -30,6 +30,7 @@ class GuaranteesController < ApplicationController
   end
 
   def edit
+    authorize! :update, @guarantee
   end
 
   def create

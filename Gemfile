@@ -28,6 +28,8 @@ gem 'will_paginate_semantic_ui'
 gem 'paperclip', '~> 5.1'
 gem 'normalize-rails', '~> 4.1', '>= 4.1.1'
 gem 'bootsnap', '~> 1.1', '>= 1.1.5'
+gem 'cancancan', '~> 2.1', '>= 2.1.2'
+gem 'rolify', '~> 5.1'
 
 
 group :development, :test do

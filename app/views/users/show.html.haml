@@ -22,9 +22,12 @@
             .description
               %p= @user.about
           .extra.content
-            %a
+            %p
               %i.mail.icon
-              = @user.email           
+              = @user.email
+            %p
+              %i.user.icon
+              = @user.roles.first.name
     .twelve.wide.column
       .ui.segment
         %h4.header Ultimos movimientos
@@ -36,14 +39,18 @@
             %th N° Correlativo
             %th Numero de ingreso
             %th Detalle
-            %th
+            %th Agregado por
+            - if can? :update, @guarantee
+              %th
         %tbody
           - @guarantees.limit(5).each do |guarantee|
             %tr
               %td= guarantee.correlative
               %td= guarantee.income_number
               %td= capitalize_detail(guarantee.detail)
-              %td= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini teal button'
+              %td= guarantee.user.first_name + ' ' + guarantee.user.last_name
+              - if can? :update, guarantee
+                %td= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini teal button'
   
 .ui.divider
 %h3 Ultimas modificaciones
