@@ -1,3 +1,4 @@
+= flash[:alert]
 %h1 Garantias
 .ui.divider
 = form_tag search_guarantees_path, method: :get, class: 'ui action left icon input', role: 'search' do
@@ -29,11 +30,11 @@
         %td= guarantee.correlative
         %td= guarantee.income_number
         %td= income_date_format(guarantee.income_date)
-        - if guarantee.due_date? && guarantee.due_date == nil
+        - if guarantee.due_date?
           %td= due_date_format(guarantee.due_date)
         - else
           %td Sin fecha de vencimiento
-        - if guarantee.devolution_date? && guarantee.devolution_date == nil
+        - if guarantee.devolution_date?
           %td= devolution_date_format(guarantee.devolution_date)
         - else 
           %td Sin fecha de devolución
