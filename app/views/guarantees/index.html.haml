@@ -24,6 +24,8 @@
       %th.two.wide Valor de garantia
       - if can? :update, @guarantee
         %th
+      - else
+        %th
   %tbody
     - @guarantees.each do |guarantee|
       %tr
@@ -42,6 +44,8 @@
         %td= capitalize_name(guarantee.income_applicant)
         %td= number_to_currency_clp(guarantee.value_guarantee)
         - if can? :update, guarantee
-          %td= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini teal button' 
+          %td= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini teal button'
+        - else 
+          %td
 %br/
 = will_paginate @guarantes, renderer: WillPaginateSemanticUi::ActionView::Renderer
