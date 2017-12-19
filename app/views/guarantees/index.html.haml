@@ -4,11 +4,11 @@
 = form_tag search_guarantees_path, method: :get, class: 'ui action left icon input', role: 'search' do
   %i.search.icon
   = text_field_tag :search, params[:search]
-  = button_tag "Buscar", name: nil, class: 'ui primary button'
-= link_to guarantees_path(format: "xlsx"), class: 'ui primary right floated large button' do
+  = button_tag "Buscar", name: nil, class: 'ui secondary button'
+= link_to guarantees_path(format: "xlsx"), class: 'ui red right floated large button' do
   %i.file.icon
   Descargar Excel
-= link_to new_guarantee_path, class: 'ui teal right floated large button' do
+= link_to new_guarantee_path, class: 'ui secondary right floated large button' do
   %i.plus.icon
   Agregar boleta
 %table.ui.celled.table
@@ -38,14 +38,17 @@
           %td Sin fecha de vencimiento
         - if guarantee.devolution_date?
           %td= devolution_date_format(guarantee.devolution_date)
-        - else 
+        - else
           %td Sin fecha de devolución
         %td= capitalize_detail(guarantee.detail)
         %td= capitalize_name(guarantee.income_applicant)
-        %td= number_to_currency_clp(guarantee.value_guarantee)
+        - if guarantee.currency_guarantee == 'UF'
+          %td= guarantee.value_guarantee
+        - else
+          %td= number_to_currency_clp(guarantee.value_guarantee)
         - if can? :update, guarantee
-          %td= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini teal button'
-        - else 
+          %td= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini red button'
+        - else
           %td
 %br/
 = will_paginate @guarantes, renderer: WillPaginateSemanticUi::ActionView::Renderer

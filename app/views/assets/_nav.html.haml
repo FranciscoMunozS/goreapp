@@ -5,13 +5,13 @@
       Menu
     .ui.container
       .item
-        %img(src="https://semantic-ui.com/images/logo.png" alt="")
+        %img(src="https://upload.wikimedia.org/wikipedia/commons/2/29/Logo-sith-empire1.png" alt="")
       .right.menu
         %a= link_to full_name, edit_user_registration_path, class: 'item'
         %a= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: 'item'
   - else
     .ui.container
       .item
-        %img(src="https://semantic-ui.com/images/logo.png" alt="")
+        %img(src="https://upload.wikimedia.org/wikipedia/commons/2/29/Logo-sith-empire1.png" alt="")
       .right.menu
         %a= link_to "Iniciar sesión", new_user_session_path, class: 'item'
