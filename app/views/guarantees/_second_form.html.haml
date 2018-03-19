@@ -58,7 +58,7 @@
         - if @guarantee.guarantee_type == 'VALE_VISTA'
           #due-date.field
             = f.input :due_date, as: :string, label: "Fecha de vencimiento", disabled: true, input_html: { class: 'ui calendar' }
-        - else 
+        - else
           #due-date.field
             = f.input :due_date, as: :string, label: "Fecha de vencimiento", input_html: { class: 'ui calendar' }
       .two.fields
@@ -70,3 +70,4 @@
         = f.input :bip, label: "Codigo BIP"
       .form-actions
         = f.button :submit, class: 'ui primary button'
+        %a{:href => "#", :onclick => "window.print();return false;", :class=> 'ui primary button'} Registrar boleta
