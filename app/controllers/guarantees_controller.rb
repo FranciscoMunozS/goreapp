@@ -15,10 +15,10 @@ class GuaranteesController < ApplicationController
     @guarantees = Guarantee.all
     @guarantees = Guarantee.paginate(:page => params[:page], :per_page => 10).order("created_at DESC")
     @excel = Guarantee.all
- 
+
     respond_to do |format|
-      format.html 
-      format.xlsx 
+      format.html
+      format.xlsx
     end
   end
 
@@ -38,7 +38,7 @@ class GuaranteesController < ApplicationController
 
     respond_to do |format|
       if @guarantee.save
-        format.html { redirect_to @guarantee, notice: 'Garantia correctamente creada.' }
+        format.html { redirect_to root_path, notice: 'Garantia correctamente creada.' }
         format.json { render :show, status: :created, location: @guarantee }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class GuaranteesController < ApplicationController
   def update
     respond_to do |format|
       if @guarantee.update(guarantee_params)
-        format.html { redirect_to @guarantee, notice: 'Garantia correctamente actualizada.' }
+        format.html { redirect_to root_path, notice: 'Garantia correctamente actualizada.' }
         format.json { render :show, status: :ok, location: @guarantee }
       else
         format.html { render :edit }
@@ -73,6 +73,35 @@ class GuaranteesController < ApplicationController
     end
 
     def guarantee_params
-      params.require(:guarantee).permit!
+      params.require(:guarantee).permit(:correlative, :income_number, :income_date, :income_applicant, :borrower_name, :borrower_id, :bank_name, :guarantee_number,
+                                        :value_guarantee, :currency_guarantee, :due_date, :state, :bail, :detail, :bip, :devolution_number, :devolution_date,
+                                        :devolution_return, :sectorialist_devolution, :email, :technical_unit, :observation, :guarantee_type)
     end
 end
+
+#t.integer "correlative"
+#t.string "income_number"
+#t.date "income_date"
+#t.string "income_applicant"
+#t.string "borrower_name"
+#t.integer "borrower_id"
+#t.string "bank_name"
+#t.string "guarantee_number"
+#t.integer "value_guarantee"
+#t.string "currency_guarantee"
+#t.date "due_date"
+#t.string "state"
+#t.string "bail"
+#t.string "detail"
+#t.string "bip"
+#t.string "devolution_number"
+#t.date "devolution_date"
+#t.string "devolution_return"
+#t.string "sectorialist_devolution"
+#t.string "email"
+#t.string "technical_unit"
+#t.text "observation"
+#t.datetime "created_at", null: false
+#t.datetime "updated_at", null: false
+#t.integer "user_id"
+#t.string "guarantee_type"

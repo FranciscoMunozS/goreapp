@@ -4,45 +4,41 @@
     .ui.segment
       %h2 Datos devolución
       .ui.divider
-      .three.fields
-        .field
-          = f.input :state, label: "Estado boleta", input_html: { class: 'ui fluid selection dropdown' }
-        .field
-          = f.input :devolution_number, label: "Numero de devolución"
-        #devolution_date.field
-          = f.input :devolution_date, as: :string, label: "Fecha de devolución", input_html: { class: 'ui calendar' }
-      .two.fields
-        .field
-          = f.input :devolution_return, label: "Medio de devolución", input_html: { class: 'ui fluid selection dropdown' }
-        .field
-          = f.input :sectorialist_devolution, label: "Sectorialista devolución"
-      .two.fields
-        .field
-          = f.input :technical_unit, label: "Unidad tecnica"
-        .field
-          = f.input :email, label: 'Correo electronico'
+
       .field
-        = f.input :observation, label: 'Observación'
+        = f.input :state, label: "Estado boleta", input_html: { class: 'ui fluid selection dropdown' }
+      .field
+        = f.input :devolution_number, label: "Numero de devolución"
+      #devolution_date.field
+        = f.input :devolution_date, as: :string, label: "Fecha de devolución", input_html: { class: 'ui calendar' }
+      .field
+        = f.input :devolution_return, label: "Medio de devolución", input_html: { class: 'ui fluid selection dropdown' }
+      .field
+        = f.input :sectorialist_devolution, label: "Sectorialista devolución"
+      .field
+        = f.input :technical_unit, label: "Unidad tecnica"
+      .field
+        = f.input :email, label: 'Correo electronico'
+      .field
+        = f.input :observation, label: 'Observación', input_html: { rows: '2' }
     .ui.segment
       %h2 Datos de ingreso
       .ui.divider
-      .three.fields
-        .field
-          = f.input :income_number, label: 'Numero de ingreso'
-        .field
-          = f.input :income_applicant, label: 'Solicitante de ingreso'
-        #income_date.field
-          = f.input :income_date, label: 'Fecha de ingreso', as: :string, input_html: { class: 'ui calendar' }
+      .field
+        = f.input :income_number, label: 'Numero de ingreso'
+      .field
+        = f.input :income_applicant, label: 'Solicitante de ingreso'
+      #income_date.field
+        = f.input :income_date, label: 'Fecha de ingreso', as: :string, input_html: { class: 'ui calendar' }
       .field
         = f.input :guarantee_type, label: 'Tipo garantia', input_html: { class: 'ui fluid selection dropdown' }
     .ui.segment
       %h2 Datos prestador
       .ui.divider
-      .two.fields
-        .field
-          = f.input :borrower_name, label: 'Nombre tomador'
-        .field
-          = f.input :borrower_id, as: :string, label: 'ID Tomador'
+      .field
+        = f.input :borrower_name, label: 'Nombre tomador'
+      .field
+        = f.input :borrower_id, as: :string, label: 'ID Tomador'
     .ui.segment
       %h2 Bancos
       .ui.divider
@@ -50,24 +46,23 @@
     .ui.segment
       %h2 Detalles de la garantia
       .ui.divider
-      .three.fields
-        .field
-          = f.input :value_guarantee, label: "Valor garantia"
-        .field
-          = f.input :currency_guarantee, label: "Moneda garantia", input_html: { class: 'ui fluid selection dropdown' }
-        - if @guarantee.guarantee_type == 'VALE_VISTA'
-          #due-date.field
-            = f.input :due_date, as: :string, label: "Fecha de vencimiento", disabled: true, input_html: { class: 'ui calendar' }
-        - else
-          #due-date.field
-            = f.input :due_date, as: :string, label: "Fecha de vencimiento", input_html: { class: 'ui calendar' }
-      .two.fields
-        .field
-          = f.input :bail, label: "Caución"
-        .field
-          = f.input :detail, label: "Detalle"
+      .field
+        = f.input :value_guarantee, label: "Valor garantia", as: :string
+      .field
+        = f.input :currency_guarantee, label: "Moneda garantia", input_html: { class: 'ui fluid selection dropdown' }
+      - if @guarantee.guarantee_type == 'VALE_VISTA'
+        #due_date.field
+          = f.input :due_date, as: :string, label: "Fecha de vencimiento", disabled: true, input_html: { class: 'ui calendar' }
+      - else
+        #due_date.field
+          = f.input :due_date, as: :string, label: "Fecha de vencimiento", input_html: { class: 'ui calendar' }
+      .field
+        = f.input :bail, label: "Caución"
+      .field
+        = f.input :detail, label: "Detalle"
       .field
         = f.input :bip, label: "Codigo BIP"
       .form-actions
         = f.button :submit, class: 'ui primary button'
-        %a{:href => "#", :onclick => "window.print();return false;", :class=> 'ui primary button'} Registrar boleta
+        = link_to 'Registrar boleta', guarantee, class: 'ui teal button'
+        = link_to 'Cancelar', root_path, class: 'ui default button'

@@ -1,102 +1,135 @@
-<p>
-  <strong>Income number:</strong>
-  <%= @guarantee.income_number %>
-</p>
-
-<p>
-  <strong>Income date:</strong>
-  <%= @guarantee.income_date %>
-</p>
-
-<p>
-  <strong>Income applicant:</strong>
-  <%= @guarantee.income_applicant %>
-</p>
-
-<p>
-  <strong>Borrower name:</strong>
-  <%= @guarantee.borrower_name %>
-</p>
-
-<p>
-  <strong>Borrower:</strong>
-  <%= @guarantee.borrower_id %>
-</p>
-
-<p>
-  <strong>Bank name:</strong>
-  <%= @guarantee.bank_name %>
-</p>
-
-<p>
-  <strong>Value guarantee:</strong>
-  <%= @guarantee.value_guarantee %>
-</p>
-
-<p>
-  <strong>Currency guarantee:</strong>
-  <%= @guarantee.currency_guarantee %>
-</p>
-
-<p>
-  <strong>Due date:</strong>
-  <%= @guarantee.due_date %>
-</p>
-
-<p>
-  <strong>Bail:</strong>
-  <%= @guarantee.bail %>
-</p>
-
-<p>
-  <strong>Detail:</strong>
-  <%= @guarantee.detail %>
-</p>
-
-<p>
-  <strong>Bip:</strong>
-  <%= @guarantee.bip %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @guarantee.email %>
-</p>
-
-<p>
-  <strong>Observation:</strong>
-  <%= @guarantee.observation %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @guarantee.state %>
-</p>
-
-<p>
-  <strong>Devolution number:</strong>
-  <%= @guarantee.devolution_number %>
-</p>
-
-<p>
-  <strong>Devolution date:</strong>
-  <%= @guarantee.devolution_date %>
-</p>
-
-<p>
-  <strong>Devolution return:</strong>
-  <%= @guarantee.devolution_return %>
-</p>
-
-<p>
-  <strong>Sectorialist devolution:</strong>
-  <%= @guarantee.sectorialist_devolution %>
-</p>
-
-<p>
-  <strong>Technical unit:</strong>
-  <%= @guarantee.technical_unit %>
-</p>
-
-<%= link_to 'Edit', edit_guarantee_path(@guarantee) %> |
-<%= link_to 'Back', guarantees_path %>
+<style type="text/css">
+  @media print {
+    table {
+      font-size: 12px;
+    }
+    #pusher {
+      padding-top: 30px;
+    }
+    .ui.footer {
+      display: none;
+    }
+    .ui.menu {
+      display: none;
+    }
+    body {
+      background-color:#FFFFFF; background-image:none; color:#000000
+    }
+    #ad {
+      display:none;
+    }
+    #leftbar {
+      display:none;
+    }
+    #contentarea {
+      width:100%;
+      padding-left: 30px;
+    }
+    .ui.button {
+      display: none;
+    }
+  }
+</style>
+<div id="contentarea">
+  <div style="width: 216mm; height: 279mm;">
+    <div style="border: 0px solid black;  margin-right: 3px; margin-left: 3px;">
+      <h1 style="text-align: center;">REGISTRO DE GARANTIA N°: <%= @guarantee.correlative %> </h1>
+      <br>
+      <table border="0" cellpadding="1" cellspacing="1">
+        <tbody>
+          <tr>
+            <td style="width: 150px;"><span style="font-weight: bold;">CONTRATISTA</span></td>
+            <td style="border-bottom-width: 1px; width: 600px;"><%= @guarantee.borrower_name %></td>
+          </tr>
+          <tr>
+            <td><span style="font-weight: bold;">PROYECTO</span></td>
+            <td style="border-bottom-width: 1px; width: 600px"><%= @guarantee.detail %></td>
+          </tr>
+          <tr>
+            <td><span style="font-weight: bold;">SECTORIALISTA</span></td>
+            <td style="border-bottom-width: 1px;"><%= @guarantee.income_applicant %></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <br>
+      <br>
+      <table style="text-align: left;" border="0" cellpadding="1" cellspacing="1">
+        <tbody>
+          <tr>
+            <td style="width: 250px;" </td>
+            <td style="font-weight: bold; text-align: left;" colspan="2" ><span style="text-decoration: underline;">BOLETA DEVUELTA</span></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="font-weight: bold; width: 126px;" >BOLETA N&deg;</td>
+            <td style="border-bottom-width: 1px; width: 366px;" ><%= @guarantee.guarantee_number %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="font-weight: bold; width: 126px;">BANCO</td>
+            <td style="border-bottom-width: 1px; width: 366px;"><%= @guarantee.bank_name %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="font-weight: bold; width: 126px;">MONTO $</td>
+            <td style="border-bottom-width: 1px; width: 366px;"><%= @guarantee.value_guarantee %> <%= @guarantee.currency_guarantee %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="font-weight: bold; width: 126px;"><br><br><br>V&deg;B&deg;</td>
+            <td style="border-bottom-width: 1px; width: 366px;"></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <br>
+      <table style="text-align: left; " border="0" cellpadding="2" cellspacing="2">
+    <tbody>
+      <tr style="font-weight: bold; text-decoration: underline;">
+        <td colspan="4">INGRESO GARANTIA A TESORERIA</td>
+      </tr>
+      <tr>
+        <td>DOCUMENTO N&deg;:</td>
+        <td style="border-bottom-width: 1px; width: 230px;"><%= @guarantee.income_number %></td>
+        <td>FECHA:</td>
+        <td style="border-bottom-width: 1px; width: 230px;"><%= @guarantee.income_date %></td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <% if @guarantee.guarantee_type != 'VALE_VISTA' %>
+    <table style="text-align: left;" border="0" cellpadding="2" cellspacing="2">
+      <tbody>
+        <tr style="font-weight: bold; text-decoration: underline;">
+          <td colspan="4">DEVOLUCION DE GARANTIA</td>
+        </tr>
+        <tr>
+          <td>DOCUMENTO N&deg;:</td>
+          <td style="border-bottom-width: 1px; width: 230px;"><%= @guarantee.devolution_return %></td>
+          <td>FFECHA:</td>
+          <% if @guarantee.devolution_date? %>
+            <td style="border-bottom-width: 1px; width: 230px;"><%= @guarantee.devolution_date %></td>
+          <% else %>
+            <td style="border-bottom-width: 1px; width: 230px;">-</td>
+          <% end %>
+        </tr>
+        <tr>
+          <td>SOLICITADOR POR:</td>
+          <td style="border-bottom-width: 1px; width: 230px;" colspan="3"><%= @guarantee.sectorialist_devolution %></td>
+        </tr>
+        <tr>
+          <td>MEDIO DEVOLUCION:</td>
+          <td style="border-bottom-width: 1px; width: 230px;" colspan="3"><%= @guarantee.devolution_return %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+  <br>
+  <br>
+  <a class="ui primary button" href="#" onclick="window.print();return false;">Imprimir</a>
+  <%= link_to 'Cancelar', root_path, class: 'ui default button' %>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  $('#due-date').calendar({
+  $('#due_date').calendar({
     type: 'date',
     monthFirst: false
   });
@@ -56,4 +56,3 @@ $(document).ready(function () {
     })
   }, 2500);
 })
-

@@ -22,7 +22,7 @@ class CreateGuarantees < ActiveRecord::Migration[5.1]
       t.string  :sectorialist_devolution
       t.string  :email
       t.string  :technical_unit
-      t.text    :observation   
+      t.text    :observation
 
       t.timestamps
     end
