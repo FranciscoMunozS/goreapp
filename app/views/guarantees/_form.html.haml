@@ -28,6 +28,8 @@
       %h2 Detalles de la garantia
       .ui.divider
       .field
+        = f.input :guarantee_number, label: 'Numero de garantia'
+      .field
         = f.input :value_guarantee, label: "Valor garantia", as: :string
       .field
         = f.input :currency_guarantee, label: "Moneda garantia", input_html: { class: 'ui fluid selection dropdown' }
