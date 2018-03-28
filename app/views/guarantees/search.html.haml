@@ -47,7 +47,7 @@
         - else
           %td= number_to_currency_clp(guarantee.value_guarantee)
         - if can? :update, guarantee
-          %td= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini red button'
+          %td= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini teal button'
         - else
           %td
 %br/
