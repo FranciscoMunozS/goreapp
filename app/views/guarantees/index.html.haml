@@ -24,7 +24,9 @@
       %th.two.wide Valor de garantia
       - if can? :update, @guarantee
         %th
+        %th
       - else
+        %th
         %th
   %tbody
     - @guarantees.each do |guarantee|
@@ -48,6 +50,7 @@
           %td= number_to_currency_clp(guarantee.value_guarantee)
         - if can? :update, guarantee
           %td= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini teal button'
+          %td= link_to 'Eliminar', { action: :destroy, id: guarantee.id }, class: 'ui mini default button', method: :delete, data: { confirm: '¿Esta seguro?' }
         - else
           %td
 %br/
