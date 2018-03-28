@@ -4,11 +4,11 @@
 = form_tag search_guarantees_path, method: :get, class: 'ui action left icon input', role: 'search' do
   %i.search.icon
   = text_field_tag :search, params[:search]
-  = button_tag "Buscar", name: nil, class: 'ui secondary button'
-= link_to guarantees_path(format: "xlsx"), class: 'ui red right floated large button' do
+  = button_tag "Buscar", name: nil, class: 'ui primary button'
+= link_to guarantees_path(format: "xlsx"), class: 'ui teal right floated large button' do
   %i.file.icon
   Descargar Excel
-= link_to new_guarantee_path, class: 'ui secondary right floated large button' do
+= link_to new_guarantee_path, class: 'ui primary right floated large button' do
   %i.plus.icon
   Agregar boleta
 %table.ui.celled.table
