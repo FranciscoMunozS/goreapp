@@ -30,6 +30,7 @@ gem 'normalize-rails', '~> 4.1', '>= 4.1.1'
 gem 'bootsnap', '~> 1.1', '>= 1.1.5'
 gem 'cancancan', '~> 2.1', '>= 2.1.2'
 gem 'rolify', '~> 5.1'
+gem 'capistrano-rails-logs-tail'
 
 group :development do
   gem 'capistrano', '~> 3.7', '>= 3.7.1'
