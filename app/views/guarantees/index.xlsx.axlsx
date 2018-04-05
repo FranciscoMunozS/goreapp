@@ -1,9 +1,7 @@
 wb = xlsx_package.workbook
 
 wb.add_worksheet(name: "Boletas") do |sheet|
-  # this is the head row of your spreadsheet
-  # each user is a row on your spreadsheet
   @excel. each do |guarantee|
-    sheet.add_row [guarantee.correlative, guarantee.income_number, guarantee.income_date, guarantee.income_applicant, guarantee.borrower_name, guarantee.borrower_id, guarantee.bank_name, guarantee.guarantee_number, guarantee.value_guarantee, guarantee.currency_guarantee, guarantee.due_date, guarantee.state, guarantee.bail, guarantee.detail, guarantee.bip,  guarantee.devolution_number, guarantee.devolution_date, guarantee.devolution_return, guarantee.sectorialist_devolution, guarantee.email, guarantee.technical_unit, guarantee.observation]
+    sheet.add_row [guarantee.correlative, guarantee.income_number, guarantee.income_date, guarantee.income_applicant, guarantee.borrower_name, guarantee.borrower_id, guarantee.bank_name, guarantee.guarantee_number, guarantee.guarantee_type, guarantee.value_guarantee, guarantee.currency_guarantee, guarantee.due_date, guarantee.state, guarantee.bail, guarantee.detail, guarantee.bip,  guarantee.devolution_number, guarantee.devolution_date, guarantee.devolution_return, guarantee.sectorialist_devolution, guarantee.email, guarantee.technical_unit, guarantee.observation]
   end
 end
