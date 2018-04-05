@@ -19,6 +19,8 @@ class Guarantee < ApplicationRecord
 
   enumerize :devolution_return, in: [:DESPACHO, :DESPACHO_CORRESPONDENCIA, :RETIRO_PERSONAL, :-]
 
+  serialize :guarantee_type, Array
+
   enumerize :guarantee_type, in: [:GARANTIA, :VALE_VISTA, :LETRA_CAMBIO, :CERTIFICADO_PRORROGA, :CERTIFICADO_FIANZA, :POLIZA_GARANTIA, :PAGARE, :CERTIFICADO]
 
 end

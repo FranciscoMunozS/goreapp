@@ -1,18 +1,16 @@
-.ui.fixed.menu
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
   - if user_signed_in?
-    %a.item#sidebutton
-      %i.sidebar.icon
-      Menu
-    .ui.container
-      .item
-        %img(src="http://216.155.90.144/wp/wp-content/uploads/2014/07/logotipo_gorelosrios_transparente.gif" alt="")
-      .right.menu
-        %a= link_to 'Inicio', root_path, class: 'item'
-        %a= link_to full_name, edit_user_registration_path, class: 'item'
-        %a= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: 'item'
+    = link_to 'Boleta de garantia', root_path, class: 'navbar-brand'
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.ml-auto
+        %li= link_to 'Inicio', root_path, class: 'nav-link'
+        %li= link_to full_name, edit_user_registration_path, class: 'nav-link'
+        %li= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: 'nav-link'
   - else
-    .ui.container
-      .item
-        %img(src="http://216.155.90.144/wp/wp-content/uploads/2014/07/logotipo_gorelosrios_transparente.gif" alt="")
-      .right.menu
-        %a= link_to "Iniciar sesión", new_user_session_path, class: 'item'
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.ml-auto
+        %li= link_to "Iniciar sesión", new_user_session_path, class: 'item'

@@ -1,57 +1,47 @@
 = flash[:alert]
 %h1 Garantias
-.ui.divider
-= form_tag search_guarantees_path, method: :get, class: 'ui action left icon input', role: 'search' do
-  %i.search.icon
-  = text_field_tag :search, params[:search]
-  = button_tag "Buscar", name: nil, class: 'ui primary button'
-= link_to guarantees_path(format: "xlsx"), class: 'ui teal right floated large button' do
-  %i.file.icon
-  Descargar Excel
-= link_to new_guarantee_path, class: 'ui primary right floated large button' do
-  %i.plus.icon
-  Agregar boleta
-%table.ui.celled.table
+%hr
+.row
+  = form_tag search_guarantees_path, method: :get, class: 'form-inline my-2 my-lg-0', role: 'search' do
+    = text_field_tag :search, params[:search], class: 'form-control mr-sm-2'
+    = button_tag "Buscar", name: nil, class: 'btn btn-outline-success my-2 my-sm-0'
+  .btn.btn-group
+    = link_to 'Descargar Excel', guarantees_path(format: "xlsx"), class: 'btn btn-info'
+    = link_to 'Agregar boleta', new_guarantee_path, class: 'btn btn-primary'
+%table.table-bordered
   %thead
     %tr
-      %th N° Correlativo
-      %th Numero de ingreso
-      %th Fecha de ingreso
-      %th Fecha de vencimiento
-      %th Fecha de devolución
-      %th Detalle
-      %th.two.wide Analista
-      %th.two.wide Valor de garantia
-      - if can? :update, @guarantee
-        %th
-        %th
-      - else
-        %th
-        %th
+      %th.text-center Correlativo
+      %th.text-center N° Ingreso
+      %th.text-center Fecha de ingreso
+      %th.text-center Fecha de vencimiento
+      %th.text-center Fecha de devolución
+      %th.text-center Detalle
+      %th.text-center Analista
+      %th.text-center Valor de garantia
+      %th.text-center{colspan: 2} Acciones
   %tbody
     - @guarantees.each do |guarantee|
       %tr
-        %td= guarantee.correlative
-        %td= guarantee.income_number
-        %td= income_date_format(guarantee.income_date)
+        %td.text-center= guarantee.correlative
+        %td.text-center= guarantee.income_number
+        %td.text-center= income_date_format(guarantee.income_date)
         - if guarantee.due_date?
-          %td= due_date_format(guarantee.due_date)
+          %td.text-center= due_date_format(guarantee.due_date)
         - else
-          %td Sin fecha de vencimiento
+          %td.text-center Sin fecha de vencimiento
         - if guarantee.devolution_date?
-          %td= devolution_date_format(guarantee.devolution_date)
+          %td.text-center= devolution_date_format(guarantee.devolution_date)
         - else
-          %td Sin fecha de devolución
+          %td.text-center Sin fecha de devolución
         %td= capitalize_detail(guarantee.detail)
         %td= capitalize_name(guarantee.income_applicant)
         - if guarantee.currency_guarantee == 'UF'
-          %td= guarantee.value_guarantee
+          %td.text-center= guarantee.value_guarantee
         - else
-          %td= number_to_currency_clp(guarantee.value_guarantee)
-        - if can? :update, guarantee
-          %td= link_to 'Ver', edit_guarantee_path(guarantee), class: 'ui mini teal button'
-          %td= link_to 'Eliminar', { action: :destroy, id: guarantee.id }, class: 'ui mini default button', method: :delete, data: { confirm: '¿Esta seguro?' }
-        - else
-          %td
+          %td.text-center= number_to_currency_clp(guarantee.value_guarantee)
+        %td= link_to 'Ver', edit_guarantee_path(guarantee), class: 'btn btn-primary btn-sm'
+        %td= link_to 'Eliminar', { action: :destroy, id: guarantee.id }, class: 'btn btn-primary btn-sm', method: :delete, data: { confirm: '¿Esta seguro?' }
 %br/
-= will_paginate @guarantes, renderer: WillPaginateSemanticUi::ActionView::Renderer
+
+= will_paginate @guarantees, renderer: WillPaginate::ActionView::BootstrapLinkRenderer

@@ -10,34 +10,26 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require calendar
+ *= require bootstrap-datepicker3
  *= require normalize-rails
  *= require_tree .
  *= require_self
  */
 
- @import "semantic-ui";
+@import "bootstrap";
 
- body>.grid {
-   height: 100%;
- }
+.table-bordered{
+  font-size: 15px;
+}
 
- #pusher {
-   padding-top: 70px;
- }
+.alert.ui.message {
+ position: absolute;
+ top: 0;
+ width: 100%;
+ text-align: center;
+ margin: 0;
+}
 
- .footer.segment {
-   padding: 5em 0em;
- }
-
- .alert.ui.message {
-   position: absolute;
-   top: 0;
-   width: 100%;
-   text-align: center;
-   margin: 0;
- }
- 
- display-none {
-   display: none;
- }
+display-none {
+ display: none;
+}

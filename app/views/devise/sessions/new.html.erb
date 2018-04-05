@@ -1,23 +1,17 @@
-<div class="ui middle aligned center aligned grid">
-  <div class="column">
-    <h2>Iniciar sesión</h2>
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="ui large form">
-        <div class="ui stacked segment">
-          <div class="field">
-            <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "Correo electronico" %>
-          </div>
-          <div class="field">
-            <%= f.input :password, required: true, label: false, placeholder: "Contraseña" %>
-          </div>
-          <%= f.button :submit, "Iniciar sesión", class: 'ui fluid primary button' %>
-        </div> 
-      </div> 
-    <% end %>
-    <div class="ui message">
-      <%= render "devise/shared/links" %>
+<div class="row justify-content-md-center">
+  <div class="col-md-4">
+    <div class="card">
+      <h2 class="card-header">Iniciar sesión</h2>
+      <div class="card-body">
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "Correo electronico" %>
+          <%= f.input :password, required: true, label: false, placeholder: "Contraseña" %>
+          <%= f.button :submit, "Iniciar sesión", class: 'btn btn-primary btn-block' %>
+        <% end %>
+      </div>
+      <div class="card-footer">
+        <p class="text-center"><%= render "devise/shared/links" %></p>
+      </div>
     </div>
   </div>
 </div>
-
-

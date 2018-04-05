@@ -1,50 +1,19 @@
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = f.error_notification
-  .ui.segment
-    .ui.form
-      %h2 Configuración usuario
-      .ui.divider
-      .ui.grid
-        .row
-          .four.wide.column
-            .ui.card
-              - if @user.avatar?
-                .image
-                  = image_tag @user.avatar.url(:thumb)
-              .content
-                - if @user.avatar?
-                  %a#upload-btn.ui.fluid.icon.button
-                    %i.file.icon
-                    Cambiar imagen                    
-                  = f.input :avatar, label: false, placeholder: 'Foto de perfil', input_html: { hidden: true }
-                  %input#file-display{:style => "display:none", :type => "file"}/
-                - else
-                  %a#upload-btn.ui.fluid.icon.button
-                    %i.plus.icon
-                    Agregar imagen de perfil
-                  = f.input :avatar, label: false, placeholder: 'Foto de perfil', input_html: { hidden: true }
-                  %input#file-display{:style => "display:none", :type => "file"}/               
-          .twelve.wide.column
-            .two.fields
-              .field
-                = f.input :first_name, label: false, placeholder: 'Nombre',required: true, autofocus: true
-              .field
-                = f.input :last_name, label: false, placeholder: 'Apellido',required: true, autofocus: true
-            .field
-              = f.input :username, label: false, placeholder: 'Nombre de usuario',required: true, autofocus: true
-            .field
-              = f.input :email, label: false, placeholder: 'Correo electronico',required: true, autofocus: true
-            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-              %p
-                Esperando confirmación para: #{resource.unconfirmed_email}
-            .two.fields
-              .field
-                = f.input :password, label: false, placeholder: 'Contraseña', autocomplete: "off", hint: "Dejar en blanco si no se quiere hacer modificaciones", required: false
-              .field
-                = f.input :password_confirmation, label: false, placeholder: 'Confirmar contraseña' ,required: false
-            .field
-              = f.input :current_password, placeholder: 'Contraseña actual', label: false, hint: "Necesitamos tu contraseña actual para poder realizar los cambios", required: true
-            .field
-              = f.input :about, placeholder: 'Acerca de...', label: false, required: false
-            = f.button :submit, "Actualizar datos", class: 'ui teal button'
-            = link_to 'Cancelar', root_path, class: 'ui red button'
+  .card
+    %h2.card-header Configuración usuario
+    .card-body
+      = f.input :first_name, label: false, placeholder: 'Nombre',required: true, autofocus: true
+      = f.input :last_name, label: false, placeholder: 'Apellido',required: true, autofocus: true
+      = f.input :username, label: false, placeholder: 'Nombre de usuario',required: true, autofocus: true
+      = f.input :email, label: false, placeholder: 'Correo electronico',required: true, autofocus: true
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %p
+          Esperando confirmación para: #{resource.unconfirmed_email}
+      = f.input :password, label: false, placeholder: 'Contraseña', autocomplete: "off", hint: "Dejar en blanco si no se quiere hacer modificaciones", required: false
+      = f.input :password_confirmation, label: false, placeholder: 'Confirmar contraseña' ,required: false
+      = f.input :current_password, placeholder: 'Contraseña actual', label: false, hint: "Necesitamos tu contraseña actual para poder realizar los cambios", required: true
+      = f.input :about, placeholder: 'Acerca de...', label: false, required: false
+    .card-footer
+      = f.button :submit, "Actualizar datos", class: 'btn btn-primary'
+      = link_to 'Cancelar', root_path, class: 'btn btn-info'

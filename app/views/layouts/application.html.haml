@@ -6,16 +6,9 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body
-    .pusher
-      - if user_signed_in?
-        = render 'assets/nav'
-        = render 'assets/side'
-      - flash.each do |name, msg|
-        = content_tag(:div, msg, class: "alert ui message")
-      .ui.container
-        #pusher
-          = yield
-      %br/
-      %br/
     - if user_signed_in?
-      = render 'assets/footer'
+      = render 'assets/nav'
+    - flash.each do |name, msg|
+      = content_tag(:div, msg, class: "alert ui message")
+    .container
+      = yield

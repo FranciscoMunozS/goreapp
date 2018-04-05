@@ -1,70 +1,53 @@
 = simple_form_for(@guarantee) do |f|
   = f.error_notification
-  .ui.form
-    .ui.segment
-      %h2 Datos devolución
-      .ui.divider
-
-      .field
-        = f.input :state, label: "Estado boleta", input_html: { class: 'ui fluid selection dropdown' }
-      .field
+  .form-group
+    .card
+      %h2.card-header Datos devolución
+      .card-body
+        = f.input :state, label: "Estado boleta"
         = f.input :devolution_number, label: "Numero de devolución"
-      #devolution_date.field
-        = f.input :devolution_date, as: :string, label: "Fecha de devolución", input_html: { class: 'ui calendar' }
-      .field
-        = f.input :devolution_return, label: "Medio de devolución", input_html: { class: 'ui fluid selection dropdown' }
-      .field
+        = f.input :devolution_date, as: :string, label: "Fecha de devolución", input_html: { class: 'datepicker' }
+        = f.input :devolution_return, label: "Medio de devolución"
         = f.input :sectorialist_devolution, label: "Sectorialista devolución"
-      .field
         = f.input :technical_unit, label: "Unidad tecnica"
-      .field
         = f.input :email, label: 'Correo electronico'
-      .field
         = f.input :observation, label: 'Observación', input_html: { rows: '2' }
-    .ui.segment
-      %h2 Datos de ingreso
-      .ui.divider
-      .field
+    %br
+    .card
+      %h2.card-header Datos de ingreso
+      .card-body
         = f.input :guarantee_number, label: 'Numero de garantia'
-      .field
         = f.input :income_number, label: 'Numero de ingreso'
-      .field
         = f.input :income_applicant, label: 'Solicitante de ingreso'
-      #income_date.field
-        = f.input :income_date, label: 'Fecha de ingreso', as: :string, input_html: { class: 'ui calendar' }
-      .field
-        = f.input :guarantee_type, label: 'Tipo garantia', input_html: { class: 'ui fluid selection dropdown' }
-    .ui.segment
-      %h2 Datos prestador
-      .ui.divider
-      .field
+        = f.input :income_date, label: 'Fecha de ingreso', as: :string, input_html: { class: 'datepicker' }
+        = f.input :guarantee_type, label: 'Tipo garantia'
+    %br
+    .card
+      %h2.card-header Datos prestador
+      .card-body
         = f.input :borrower_name, label: 'Nombre tomador'
-      .field
         = f.input :borrower_id, as: :string, label: 'ID Tomador'
-    .ui.segment
-      %h2 Bancos
-      .ui.divider
-      = f.input :bank_name, label: 'Nombre banco', input_html: { class: 'ui fluid selection dropdown' }
-    .ui.segment
-      %h2 Detalles de la garantia
-      .ui.divider
-      .field
+    %br
+    .card
+      %h2.card-header Bancos
+      .card-body
+        = f.input :bank_name, label: 'Nombre banco'
+    %br
+    .card
+      %h2.card-header Detalles de la garantia
+      .card-body
         = f.input :value_guarantee, label: "Valor garantia", as: :string
-      .field
-        = f.input :currency_guarantee, label: "Moneda garantia", input_html: { class: 'ui fluid selection dropdown' }
-      - if @guarantee.guarantee_type == 'VALE_VISTA'
-        #due_date.field
-          = f.input :due_date, as: :string, label: "Fecha de vencimiento", disabled: true, input_html: { class: 'ui calendar' }
-      - else
-        #due_date.field
-          = f.input :due_date, as: :string, label: "Fecha de vencimiento", input_html: { class: 'ui calendar' }
-      .field
+        = f.input :currency_guarantee, label: "Moneda garantia"
+        - if @guarantee.guarantee_type == 'VALE_VISTA'
+          = f.input :due_date, as: :string, label: "Fecha de vencimiento", disabled: true, input_html: { class: 'datepicker' }
+        - else
+          = f.input :due_date, as: :string, label: "Fecha de vencimiento", input_html: { class: 'datepicker' }
         = f.input :bail, label: "Caución"
-      .field
+
         = f.input :detail, label: "Detalle"
-      .field
+
         = f.input :bip, label: "Codigo BIP"
-      .form-actions
-        = f.button :submit, class: 'ui primary button'
-        = link_to 'Registrar boleta', guarantee, class: 'ui teal button'
-        = link_to 'Cancelar', root_path, class: 'ui default button'
+      .btn.btn-group
+        = f.button :submit, class: 'btn btn-info'
+        = link_to 'Registrar boleta', guarantee, class: 'btn btn-light'
+        = link_to 'Cancelar', root_path, class: 'btn btn-secondary'
