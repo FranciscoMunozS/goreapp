@@ -2,12 +2,15 @@
 %h1 Garantias
 %hr
 .row
-  = form_tag search_guarantees_path, method: :get, class: 'form-inline my-2 my-lg-0', role: 'search' do
-    = text_field_tag :search, params[:search], class: 'form-control mr-sm-2'
-    = button_tag "Buscar", name: nil, class: 'btn btn-outline-success my-2 my-sm-0'
-  .btn.btn-group
-    = link_to 'Descargar Excel', guarantees_path(format: "xlsx"), class: 'btn btn-info'
-    = link_to 'Agregar boleta', new_guarantee_path, class: 'btn btn-primary'
+  .col-md-3
+    = form_tag search_guarantees_path, method: :get, class: 'form-inline my-2 my-lg-0', role: 'search' do
+      = text_field_tag :search, params[:search], class: 'form-control mr-sm-2'
+      = button_tag "Buscar", name: nil, class: 'btn btn-outline-success my-2 my-sm-0'
+  .col-md-3
+  .col-md-3
+  .col-md-3
+    = link_to 'Agregar boleta', new_guarantee_path, class: 'btn btn-primary btn-block'
+%hr
 %table.table-bordered
   %thead
     %tr
@@ -37,11 +40,18 @@
         %td= capitalize_detail(guarantee.detail)
         %td= capitalize_name(guarantee.income_applicant)
         - if guarantee.currency_guarantee == 'UF'
-          %td.text-center= guarantee.value_guarantee
+          %td.text-center
+            = guarantee.value_guarantee
+            = guarantee.currency_guarantee
         - else
-          %td.text-center= number_to_currency_clp(guarantee.value_guarantee)
+          %td.text-center
+            = number_to_currency_clp(guarantee.value_guarantee)
+            = guarantee.currency_guarantee
         %td= link_to 'Ver', edit_guarantee_path(guarantee), class: 'btn btn-primary btn-sm'
         %td= link_to 'Eliminar', { action: :destroy, id: guarantee.id }, class: 'btn btn-primary btn-sm', method: :delete, data: { confirm: '¿Esta seguro?' }
 %br/
-
-= will_paginate @guarantees, renderer: WillPaginate::ActionView::BootstrapLinkRenderer
+.row
+  .col-md-4
+  .col-md-4
+    = will_paginate @guarantees, renderer: WillPaginate::ActionView::BootstrapLinkRenderer
+  .col-md-4

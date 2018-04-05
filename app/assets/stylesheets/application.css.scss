@@ -18,16 +18,22 @@
 
 @import "bootstrap";
 
-.table-bordered{
+.table-bordered {
   font-size: 15px;
 }
 
+@media (min-width: 1200px) {
+  .container{
+      max-width: 1600px;
+  }
+}
+
 .alert.ui.message {
- position: absolute;
- top: 0;
- width: 100%;
- text-align: center;
- margin: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  margin: 0;
 }
 
 display-none {
