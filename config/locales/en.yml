@@ -51,3 +51,11 @@ en:
       guarantee:
         create: "Crear boleta de garantia"
         update: "Actualizar boleta de garantia"
+    submit:
+      user:
+        create: "Crear usuario"
+        update: "Actualizar usuario"
+
+  unauthorized:
+    manage:
+      all: "Sin acceso al recurso solicitado"
