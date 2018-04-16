@@ -8,6 +8,8 @@ require 'capistrano/rbenv'
 
 require 'capistrano/rails/logs'
 
+require 'capistrano/rake'
+
 set :rbenv_type, :user
 set :rbenv_ruby, '2.5.0'
 
