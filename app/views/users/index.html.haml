@@ -1,0 +1,28 @@
+%h2 Usuarios
+%hr
+.row
+ .col-md-4
+  = link_to 'Agregar usuario', new_user_path, class: 'btn btn-primary'
+
+.row
+ .col-md-12
+  %br
+  %table.table-hover.display.table(cellspacing="0" width="100%")
+   %thead
+    %tr
+     %th.text-center Nombre de usuario
+     %th.text-center Nombre
+     %th.text-center Apellido
+     %th.text-center Correo electronico
+     %th.text-center Roles
+     %th.text-center{colspan: 2} Acciones
+   %tbody
+    - @users.each do |user|
+     %tr
+      %td.text-center= user.username
+      %td.text-center= user.first_name
+      %td.text-center= user.last_name
+      %td.text-center= user.email
+      %td.text-center= user.roles.first.name
+      %td= link_to 'Ver', edit_user_path(user), class: 'btn btn-outline-success btn-sm'
+      %td= link_to 'Eliminar', { action: :destroy, id: user.id }, class: 'btn btn-outline-danger btn-sm', method: :delete, data: { confirm: '¿Esta seguro?' }

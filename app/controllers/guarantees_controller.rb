@@ -1,19 +1,20 @@
 class GuaranteesController < ApplicationController
   before_action :set_guarantee, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  load_and_authorize_resource
 
   def search
     if params[:search].present?
-      @guarantees = Guarantee.search(params[:search], page: params[:page], per_page: 12)
+      @guarantees = Guarantee.search(params[:search], page: params[:page], per_page: 10)
     else
       @guarantees = Guarantee.all
-      @guarantees = Guarantee.paginate(:page => params[:page], :per_page => 12)
+      @guarantees = Guarantee.paginate(:page => params[:page], :per_page => 10)
     end
   end
 
   def index
     @guarantees = Guarantee.all
-    @guarantees = Guarantee.paginate(:page => params[:page], :per_page => 12).order("created_at DESC")
+    @guarantees = Guarantee.paginate(:page => params[:page], :per_page => 10).order("created_at DESC")
     @excel = Guarantee.all
 
     respond_to do |format|

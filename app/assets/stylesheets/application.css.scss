@@ -18,8 +18,12 @@
 
 @import "bootstrap";
 
-.table-bordered {
-  font-size: 15px;
+.table-hover{
+  font-size: 13px;
+}
+
+.pagination {
+  font-size: 13px;
 }
 
 @media (min-width: 1200px) {

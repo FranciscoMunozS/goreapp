@@ -1,0 +1,16 @@
+= simple_form_for(@user) do |f|
+  = f.error_notification
+  .card
+    %h2.card-header Datos de ingreso
+    .card-body
+      = f.input :first_name, label: 'Nombre'
+      = f.input :last_name, label: 'Apellido'
+      = f.input :username, label: 'Nombre de usuario'
+      = f.input :email, label: 'Correo electronico'
+      = f.input :password, label: 'Contraseña'
+      = f.input :password_confirmation, label: 'Confirmar Contraseña'
+      = f.input :about, label: 'Observación'
+
+      = f.association :roles, collection: Role.all
+
+      = f.button :submit, class: 'btn btn-primary'

@@ -2,17 +2,15 @@
 %br
 .row
   .col-md-4
-    %h4 Garantias
+    %h4 Garantías
   .col-md-4
     = form_tag search_guarantees_path, method: :get, class: 'form-inline my-2 my-lg-0', role: 'search' do
       = text_field_tag :search, params[:search], class: 'form-control mr-sm-2'
       = button_tag "Buscar", name: nil, class: 'btn btn-outline-success my-2 my-sm-0'
   .col-md-4
     = link_to 'Agregar boleta', new_guarantee_path, class: 'btn btn-outline-primary btn-block'
-
-%hr
-
-%table.table-bordered
+%br
+%table.table-hover.display.table(cellspacing="0" width="100%")
   %thead
     %tr
       %th.text-center Correlativo
@@ -22,7 +20,7 @@
       %th.text-center Fecha de devolución
       %th.text-center Detalle
       %th.text-center Analista
-      %th.text-center Valor de garantia
+      %th.text-center Valor de garantía
       %th.text-center{colspan: 2} Acciones
   %tbody
     - @guarantees.each do |guarantee|
