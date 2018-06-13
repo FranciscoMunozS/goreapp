@@ -32,13 +32,13 @@ gem 'bootsnap', '~> 1.1', '>= 1.1.5'
 gem 'cancancan', '~> 2.1', '>= 2.1.2'
 gem 'rolify', '~> 5.1'
 gem 'capistrano-rails-logs-tail'
+gem 'figaro'
 
 group :development do
   gem 'capistrano', '~> 3.7', '>= 3.7.1'
   gem 'capistrano-rails', '~> 1.2'
   gem 'capistrano-passenger', '~> 0.2.0'
   gem 'capistrano-rake', require: false
-
   gem 'capistrano-rbenv', '~> 2.1'
 end
 

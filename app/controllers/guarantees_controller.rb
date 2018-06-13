@@ -2,6 +2,7 @@ class GuaranteesController < ApplicationController
   before_action :set_guarantee, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   load_and_authorize_resource
+  skip_load_and_authorize_resource :only => :search
 
   def search
     if params[:search].present?
