@@ -48,6 +48,7 @@
 
         = f.input :bip, label: "Codigo BIP"
       .btn.btn-group
-        = f.button :submit, class: 'btn btn-info'
-        = link_to 'Registrar boleta', guarantee, class: 'btn btn-light'
+        - if current_user.has_role? :admin
+          = f.button :submit, class: 'btn btn-info'
+          = link_to 'Registrar boleta', guarantee, class: 'btn btn-light'
         = link_to 'Cancelar', root_path, class: 'btn btn-secondary'

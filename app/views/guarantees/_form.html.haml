@@ -35,4 +35,5 @@
         = f.input :bip, label: "Codigo BIP"
         = f.input :email, label: 'Correo electronico'
         = f.input :observation, label: 'Observación', input_html: { rows: '2' }
-        = f.button :submit, class: 'btn btn-primary'
+        - if current_user.has_role? :admin
+          = f.button :submit, class: 'btn btn-primary'

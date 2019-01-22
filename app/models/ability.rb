@@ -10,9 +10,12 @@ class Ability
     else
       can :read, Guarantee if user.has_role?(:editor, Guarantee)
       can :create, Guarantee if user.has_role?(:editor, Guarantee)
-      can :destroy, Guarantee if user.has_role?(:editor, Guarantee)
 
       can :read, Guarantee
+    end
+    if user.has_role? :visitor
+      can :manage, Guarantee
+      cannot :destroy, Guarantee
     end
   end
 end
